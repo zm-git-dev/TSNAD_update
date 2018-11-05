@@ -1,6 +1,7 @@
 ## TSNAD
  
- Precision HLA typing from next-generation sequencing data  
+ Neoantigen prediction from WGS or WES.    
+   
  Authors: Zhan Zhou, Jingcheng Wu, Xingzheng Lv.  
  Date: November 2018  
  Version: 1.1  
