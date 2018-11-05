@@ -60,5 +60,24 @@ TSNAD uses the following software and libraries:
 	unzip ensembl-vep-release-*.zip
 	perl INSTALL.pl
 
-	
-	
+## Usage
+
+
+## update
+
+### V1.0 
+1. GUI for neoantigen prediction  
+2. Two parts: one for somatic mutation detection, another for HLA-peptide prediction.
+
+### v1.1
+
+  Trimmomatic v0.35 -> v0.38
+  BWA v0.7.12 -> v0.7.17
+  Samtools v1.3 -> v1.9
+  Picard v1.140 -> v2.18.14
+  GATK v3.5 -> v4.0.8.1
+  Annovar -> VEP v94
+
+
+  
+ 
