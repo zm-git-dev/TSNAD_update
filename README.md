@@ -20,5 +20,14 @@ TSNAD uses the following software and libraries:
   3.[samtools](https://sourceforge.net/projects/samtools/files/latest/download)  
   4.[picard](https://github.com/broadinstitute/picard/releases/download/2.18.15/picard.jar)    
   5.[GATK](https://software.broadinstitute.org/gatk/download)   
-  6.[VEP](https://github.com/Ensembl/ensembl-vep/archive/release/94.zip)    
+  6.[VEP](https://github.com/Ensembl/ensembl-vep/archive/release/94.zip)
+  7.[JAVA]
+  8.[Python]
+  9.[Perl]
+  
+1-6 tools are better put in the folder Tools/.
+## Installation of each module
+
+  1.Trimmomatic   
+  	unzip Trimmomatic-*.zip
 
