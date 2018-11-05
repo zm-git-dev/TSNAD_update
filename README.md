@@ -62,8 +62,19 @@ TSNAD uses the following software and libraries:
 
 ## Usage
 
+configure the file *somatic_mutation_sequencing_parameters.config* ,
 
-## update
+then 
+
+	python  somatic_mutation_sequencing_pipeline.py
+
+configure the file *antigen_predicting_parameters.config* ,
+
+then 
+
+	python antigen_predicting_pipeline.py
+
+## update log
 
 ### V1.0 
 1. GUI for neoantigen prediction  
@@ -71,13 +82,13 @@ TSNAD uses the following software and libraries:
 
 ### v1.1
 
-  Trimmomatic v0.35 -> v0.38
-  BWA v0.7.12 -> v0.7.17
-  Samtools v1.3 -> v1.9
-  Picard v1.140 -> v2.18.14
-  GATK v3.5 -> v4.0.8.1
-  Annovar -> VEP v94
-
+  Trimmomatic v0.35 -> v0.38  
+  BWA v0.7.12 -> v0.7.17  
+  Samtools v1.3 -> v1.9  
+  Picard v1.140 -> v2.18.14  
+  GATK v3.5 -> v4.0.8.1  
+  Annovar -> VEP v94  
+ 
 
   
  
