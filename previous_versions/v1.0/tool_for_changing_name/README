@@ -2,7 +2,7 @@
 
 Users need to install the QTcreator to run this tool.
 
-  QTcreator can be downloaded in https://www.qt.io/download/.
+	QTcreator can be downloaded in https://www.qt.io/download/.
 
 All files in this folder should be downloaded and kept in the same folder. 
 
@@ -10,9 +10,9 @@ After downloading the tool， users can follow listed steps to utilize it：
 
 1.open the QTcreator， choose to open new project, 
 
- drump to the location where this tool is, 
+	drump to the location where this tool is, 
 
- then select SamplesConfiguration.pro to open it。
+	then select SamplesConfiguration.pro to open it.
  
 2.Cltr+R and a GUI will appeared, users should define the lane number and part number.
 
