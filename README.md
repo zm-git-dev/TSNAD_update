@@ -1,4 +1,4 @@
-## TSNAD
+# TSNAD
  
  Neoantigen prediction from WGS or WES.    
    
@@ -7,13 +7,13 @@
  Version: 1.1  
  License: TSNAD is released under GNU license  
 
-# Introduction  
+## Introduction  
 
 An integrated software for cancer somatic mutation and tumour-specific neoantigen detection.  
 
-# Requirements
+## Requirements
 
-TSNAD uses the following software and libraries:  
+### TSNAD uses the following software and libraries:  
 	
   1.[Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic)  
   2.[bwa](https://sourceforge.net/projects/bio-bwa/files/)  
