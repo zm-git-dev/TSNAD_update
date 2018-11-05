@@ -15,8 +15,8 @@ An integrated software for cancer somatic mutation and tumour-specific neoantige
 
 TSNAD uses the following software and libraries:  
 	
-  1.[Trimmomatic][http://www.usadellab.org/cms/?page=trimmomatic]  
-  2.[bwa][https://sourceforge.net/projects/bio-bwa/files/]  
+  1.[Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic)  
+  2.[bwa](https://sourceforge.net/projects/bio-bwa/files/)  
   3.[samtools][3]  
   4.[picard][4]  
   5.[GATK][5]  
