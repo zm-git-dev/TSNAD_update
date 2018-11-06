@@ -57,6 +57,24 @@ TSNAD uses the following software and libraries:
 
 		unzip ensembl-vep-release-*.zip
 		perl INSTALL.pl
+	
+	if it is not help, try following step:
+
+		mkdir src
+		cd src
+		wget ftp://ftp.ensembl.org/pub/ensembl-api.tar.gz
+		wget https://cpan.metacpan.org/authors/id/C/CJ/CJFIELDS/BioPerl-1.6.924.tar.gz
+		
+		PERL5LIB=${PERL5LIB}:${HOME}/src/bioperl-1.6.924
+		PERL5LIB=${PERL5LIB}:${HOME}/src/ensembl/modules
+		PERL5LIB=${PERL5LIB}:${HOME}/src/ensembl-compara/modules
+		PERL5LIB=${PERL5LIB}:${HOME}/src/ensembl-variation/modules
+		PERL5LIB=${PERL5LIB}:${HOME}/src/ensembl-funcgen/modules
+		export PERL5LIB
+		
+		 sudo perl -MCPAN -e shell
+		 install Bio::PrimarySeqI
+		 install DBI
 
 ## Usage
 
