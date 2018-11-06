@@ -29,34 +29,34 @@ TSNAD uses the following software and libraries:
 ## Installation of each module
 1. Trimmomatic   
 
-	unzip Trimmomatic-*.zip
+		unzip Trimmomatic-*.zip
 
 2. bwa
 
-	tar -xjvf bwa-*.tar.bz2
-	cd bwa-*
-	make
+		tar -xjvf bwa-*.tar.bz2
+		cd bwa-*
+		make
 
 3. samtools
 	
-	sudo apt-get install libncurses5-dev
-	sudo apt-get install libbz2-dev
-	sudo apt-get install liblzma-dev
-	tar -xjvf samtools-*.tar.bz2
-	cd samtools-*
-	./configure
-	make
-	make install
+		sudo apt-get install libncurses5-dev
+		sudo apt-get install libbz2-dev
+		sudo apt-get install liblzma-dev
+		tar -xjvf samtools-*.tar.bz2
+		cd samtools-*
+		./configure
+		make
+		make install
 
 4. GATK
 
-	unzip gatk-*.zip
-	sudo apt install openjdk-8-jdk-headless
+		unzip gatk-*.zip
+		sudo apt install openjdk-8-jdk-headless
 	
 5. VEP
 
-	unzip ensembl-vep-release-*.zip
-	perl INSTALL.pl
+		unzip ensembl-vep-release-*.zip
+		perl INSTALL.pl
 
 ## Usage
 
@@ -72,7 +72,7 @@ then
 
 	python antigen_predicting_pipeline.py
 
-## update log
+## Update log
 
 ### V1.0 
 1. GUI for neoantigen prediction  
