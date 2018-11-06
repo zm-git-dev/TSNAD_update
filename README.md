@@ -56,9 +56,10 @@ TSNAD uses the following software and libraries:
 5. VEP
 
 		unzip ensembl-vep-release-*.zip
+		cd ensembl-vep-release-*
 		perl INSTALL.pl
 	
-	if it is not help, try following step:
+	if it is not help, try following step, in the folder *ensembl-vep-release-* * :
 
 		mkdir src
 		cd src
