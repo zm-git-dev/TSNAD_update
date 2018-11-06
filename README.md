@@ -46,7 +46,7 @@ TSNAD uses the following software and libraries:
 		cd samtools-*
 		./configure
 		make
-		make install
+		sudo make install
 
 4. GATK
 
