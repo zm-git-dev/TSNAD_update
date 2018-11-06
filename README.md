@@ -12,7 +12,6 @@
 An integrated software for cancer somatic mutation and tumour-specific neoantigen detection.  
 
 ## Requirements
-
 TSNAD uses the following software and libraries:  
   	
 1.[Trimmomatic](http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-Src-0.38.zip)  
@@ -28,7 +27,6 @@ TSNAD uses the following software and libraries:
 1-6 tools are better put in the folder Tools/.   
 
 ## Installation of each module
-
 1.Trimmomatic   
 
 	unzip Trimmomatic-*.zip
@@ -80,8 +78,7 @@ then
 1. GUI for neoantigen prediction  
 2. Two parts: one for somatic mutation detection, another for HLA-peptide prediction.
 
-### v1.1
-
+### V1.1
 1.Trimmomatic v0.35 -> v0.38  
 2.BWA v0.7.12 -> v0.7.17  
 3.Samtools v1.3 -> v1.9  
