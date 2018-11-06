@@ -59,8 +59,9 @@ TSNAD uses the following software and libraries:
 		cd ensembl-vep-release-*
 		perl INSTALL.pl
 	
-	if it is not help, try following step, in the folder *ensembl-vep-release-* * :
-
+	if it is not help, try following step:
+		
+		cd 
 		mkdir src
 		cd src
 		wget ftp://ftp.ensembl.org/pub/ensembl-api.tar.gz
