@@ -74,7 +74,7 @@ def multiprocess3(string,command1,command2,command3,flag):
   return;
 
 
-def runTrimmomatic(trimmomatic_folder,outputs_folder,fileList,leading,trailing,headcrop,slidingwindow,minlen,typeNum,laneNum,partNum,threadNum):
+def runTrimmomatic(trimmomatic_tool,outputs_folder,fileList,leading,trailing,headcrop,slidingwindow,minlen,typeNum,laneNum,partNum,threadNum):
  filesNum = len(fileList);
  outputCleanedFile = setOutputFileNames(fileList, '_clean.fastq', outputs_folder, 'trimmomatic_results/',0);
  outputUnpairedFile = setOutputFileNames(fileList, '_unpaired.fastq', outputs_folder, 'trimmomatic_results/',0);
@@ -84,7 +84,7 @@ def runTrimmomatic(trimmomatic_folder,outputs_folder,fileList,leading,trailing,h
  print 'loopNum %d'%loopNum
  pool = multiprocessing.Pool();
  for i in range(loopNum):
-  command = 'java -jar' + ' ' + trimmomatic_folder + ' ' + 'PE -threads' + ' ' + str(threadNum) + ' -phred33 ' + fileList[2*i] + ' ' + fileList[2*i+1] + ' ' + outputCleanedFile[2*i] + ' ' + outputUnpairedFile[2*i] + ' ' + outputCleanedFile[2*i+1] + ' ' + outputUnpairedFile[2*i+1] + ' ' + 'LEADING:' + str(leading) + ' ' + 'TRAILING:' + str(trailing) + ' ' + 'HEADCROP:' + str(headcrop) + ' '  + 'SLIDINGWINDOW:' + str(slidingwindow) + ' ' + 'MINLEN:' + str(minlen)
+  command = 'java -jar' + ' ' + trimmomatic_tool + ' ' + 'PE -threads' + ' ' + str(threadNum) + ' -phred33 ' + fileList[2*i] + ' ' + fileList[2*i+1] + ' ' + outputCleanedFile[2*i] + ' ' + outputUnpairedFile[2*i] + ' ' + outputCleanedFile[2*i+1] + ' ' + outputUnpairedFile[2*i+1] + ' ' + 'LEADING:' + str(leading) + ' ' + 'TRAILING:' + str(trailing) + ' ' + 'HEADCROP:' + str(headcrop) + ' '  + 'SLIDINGWINDOW:' + str(slidingwindow) + ' ' + 'MINLEN:' + str(minlen)
   print command
   pool.apply_async(multiprocess1,(fileList[2*i]+' '+fileList[2*i+1],command,));
  pool.close();
@@ -108,7 +108,7 @@ def setHeaderNames(typeNum,laneNum):
  return sampleHeaderNames;
 
 # Long sequence processing in default. pair-end, single reads data is not considered 
-def runBWA(bwa_folder,gatk_folder,ref_folder,outputs_folder,inputFiles,typeNum,laneNum,partNum,threadNum):
+def runBWA(bwa_folder,gatk_tool,ref_folder,outputs_folder,inputFiles,typeNum,laneNum,partNum,threadNum):
  # set header
  sampleHeaderNames = setHeaderNames(typeNum,laneNum);
  outputSamFiles = setOutputFileNames(inputFiles, '.sam', outputs_folder, 'bwa_results/',partNum);
@@ -135,7 +135,7 @@ def runBWA(bwa_folder,gatk_folder,ref_folder,outputs_folder,inputFiles,typeNum,l
  return outputSamFiles;
 
  
-def runSAM(samtools_folder,picardtools_folder,outputs_folder,inputfiles,typeNum,laneNum,threadNum):
+def runSAM(samtools_folder,picardtools_tool,outputs_folder,inputfiles,typeNum,laneNum,threadNum):
  outputBamFiles = setOutputFileNames(inputfiles, '.bam', outputs_folder, 'samtools_results/',0);
  outputSortedBamFiles = setOutputFileNames(inputfiles, '_sort.bam', outputs_folder, 'samtools_results/',0);
  filesNum = len(outputBamFiles);
@@ -161,7 +161,7 @@ def runSAM(samtools_folder,picardtools_folder,outputs_folder,inputfiles,typeNum,
     for j in range(laneNum):
      inputString = inputString + ' INPUT=' + outputSortedBamFiles[i*laneNum + j];
      filestring = filestring + ' ' + outputSortedBamFiles[i*laneNum + j];
-    command3 = 'java -Xmx16g -jar' + ' ' + picardtools_folder + ' MergeSamFiles ' + inputString + ' OUTPUT=' + outputMergeFiles[i];
+    command3 = 'java -Xmx16g -jar' + ' ' + picardtools_tool + ' MergeSamFiles ' + inputString + ' OUTPUT=' + outputMergeFiles[i];
     pool.apply_async(multiprocess1,(filestring,command3,));
   pool.close();
   pool.join();
@@ -176,7 +176,7 @@ def runSAM(samtools_folder,picardtools_folder,outputs_folder,inputfiles,typeNum,
  outputDedupMetircs = setOutputFileNames(outputMergeFiles, '_dedup.metrics', outputs_folder, 'samtools_results/',0);
  print " Notes: Multi-processing is applied to speed up the data processing";
  for i in range(typeNum):
-  command4 = 'java -Xmx16g -jar' + ' ' + picardtools_folder + ' MarkDuplicates REMOVE_DUPLICATES=false MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=8000 INPUT=' + outputMergeFiles[i] + ' OUTPUT=' + outputDedupFiles[i] + ' METRICS_FILE=' + outputDedupMetircs[i];
+  command4 = 'java -Xmx16g -jar' + ' ' + picardtools_tool + ' MarkDuplicates REMOVE_DUPLICATES=false MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=8000 INPUT=' + outputMergeFiles[i] + ' OUTPUT=' + outputDedupFiles[i] + ' METRICS_FILE=' + outputDedupMetircs[i];
   command5 = samtools_folder + 'samtools'+' index ' + outputDedupFiles[i];
   pool.apply_async(multiprocess2,(outputMergeFiles[i],command4,command5,));
  pool.close();
@@ -185,7 +185,7 @@ def runSAM(samtools_folder,picardtools_folder,outputs_folder,inputfiles,typeNum,
  return outputDedupFiles;
 
  
-def runGATK(samtools_folder,gatk_folder,ref_folder,outputs_folder,inputFiles,typeNum,needRevisedData):
+def runGATK(samtools_folder,gatk_tool,ref_folder,outputs_folder,inputFiles,typeNum,needRevisedData):
 # outputRealigerFiles = setOutputFileNames(inputFiles, '_realigner.intervals', outputs_folder, 'gatk_results/',0);
  #outputRealnFiles = setOutputFileNames(inputFiles, '.bam', outputs_folder, 'gatk_results/',0);
  pool = multiprocessing.Pool();
@@ -195,16 +195,16 @@ def runGATK(samtools_folder,gatk_folder,ref_folder,outputs_folder,inputFiles,typ
  outputRecalsortBamFiles = setOutputFileNames(inputFiles, '_recal_sort.bam', outputs_folder, 'gatk_results/',0);
  pool = multiprocessing.Pool();
  print " Notes: Multi-processing is applied to speed up the data processing";
- commandi1= 'java -Xmx16g -jar ' + gatk_folder + ' IndexFeatureFile -F ' + ref_folder[1]
- commandi2= 'java -Xmx16g -jar ' + gatk_folder + ' IndexFeatureFile -F ' + ref_folder[2]
- commandi3= 'java -Xmx16g -jar ' + gatk_folder + ' IndexFeatureFile -F ' + ref_folder[3]
+ commandi1= 'java -Xmx16g -jar ' + gatk_tool + ' IndexFeatureFile -F ' + ref_folder[1]
+ commandi2= 'java -Xmx16g -jar ' + gatk_tool + ' IndexFeatureFile -F ' + ref_folder[2]
+ commandi3= 'java -Xmx16g -jar ' + gatk_tool + ' IndexFeatureFile -F ' + ref_folder[3]
  os.system(commandi1);
  os.system(commandi2);
  os.system(commandi3);
  for i in range(typeNum):
-   command1 = 'java -Xmx16g -jar ' + gatk_folder + ' BaseRecalibrator -R ' + ref_folder[0] + ' -I ' + inputFiles[i] + ' -O ' + outputRecalFiles[i] + ' --known-sites ' + ref_folder[3] + ' --known-sites ' + ref_folder[2] + ' --known-sites ' + ref_folder[1];
-   command2 =  'java -Xmx16g -jar ' + gatk_folder + ' GatherBQSRReports -I ' + outputRecalFiles[i] + ' -O ' + outputRecalRevisedFiles[i]
-   command3 =  'java -Xmx16g -jar ' + gatk_folder + ' ApplyBQSR -R '+ ref_folder[0] + ' -I ' + inputFiles[i] + ' -bqsr ' + outputRecalRevisedFiles[i] + ' -O ' + outputRecalBamFiles[i]
+   command1 = 'java -Xmx16g -jar ' + gatk_tool + ' BaseRecalibrator -R ' + ref_folder[0] + ' -I ' + inputFiles[i] + ' -O ' + outputRecalFiles[i] + ' --known-sites ' + ref_folder[3] + ' --known-sites ' + ref_folder[2] + ' --known-sites ' + ref_folder[1];
+   command2 =  'java -Xmx16g -jar ' + gatk_tool + ' GatherBQSRReports -I ' + outputRecalFiles[i] + ' -O ' + outputRecalRevisedFiles[i]
+   command3 =  'java -Xmx16g -jar ' + gatk_tool + ' ApplyBQSR -R '+ ref_folder[0] + ' -I ' + inputFiles[i] + ' -bqsr ' + outputRecalRevisedFiles[i] + ' -O ' + outputRecalBamFiles[i]
    command4 = samtools_folder + 'samtools sort -@ 8 ' + outputRecalBamFiles[i] + ' -o ' + outputRecalsortBamFiles[i]
    command5 = samtools_folder + 'samtools index ' + outputRecalsortBamFiles[i]
   # os.system(command4);
@@ -218,12 +218,12 @@ def runGATK(samtools_folder,gatk_folder,ref_folder,outputs_folder,inputFiles,typ
 
  
 # MuTect to detect somatic mutation
-def runMUTECT2(gatk_folder,ref_folder,outputs_folder,inputFiles,typeNum,tumor_reads,normal_reads,tumor_f,normal_f,tumor_alt):
+def runMUTECT2(gatk_tool,ref_folder,outputs_folder,inputFiles,typeNum,tumor_reads,normal_reads,tumor_f,normal_f,tumor_alt):
  print inputFiles
  outputMutectVcfFiles = outputs_folder + 'mutect2_results/' + 'mutect_call.vcf';
  outputMutectVcfadjFiles = outputs_folder + 'mutect2_results/' + 'mutect_call_adj.vcf';
  if typeNum > 1:
-   command1 = 'java -Xmx16g -jar ' + gatk_folder + ' Mutect2 -R ' + ref_folder[0] + ' -I ' + inputFiles[0] + ' -normal normal ' + ' -I ' + inputFiles[1] + ' -tumor tumor ' + ' -O ' + outputMutectVcfFiles;
+   command1 = 'java -Xmx16g -jar ' + gatk_tool + ' Mutect2 -R ' + ref_folder[0] + ' -I ' + inputFiles[0] + ' -normal normal ' + ' -I ' + inputFiles[1] + ' -tumor tumor ' + ' -O ' + outputMutectVcfFiles;
  else:
    print 'Only one type file, cannot make a comparision between normal and tumor genes !';
  print "\n  Processing normal file: %s "%inputFiles[0],"& tumor file: %s"%inputFiles[1];
