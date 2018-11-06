@@ -72,9 +72,9 @@ TSNAD uses the following software and libraries:
 		PERL5LIB=${PERL5LIB}:${HOME}/src/ensembl-funcgen/modules
 		export PERL5LIB
 		
-		 sudo perl -MCPAN -e shell
-		 install Bio::PrimarySeqI
-		 install DBI
+		sudo perl -MCPAN -e shell
+		install Bio::PrimarySeqI
+		install DBI
 
 ## Usage
 
