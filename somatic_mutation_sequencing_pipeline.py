@@ -33,19 +33,19 @@ print "***************************************************************** Paramet
 print "System parameters are:"
 print "inputs_folder: %s"%hash_table['inputs_folder']
 print "outputs_folder: %s"%hash_table['outputs_folder']
-print "trimmomatic_folder: %s"%hash_table['trimmomatic_folder']
+print "trimmomatic_tool: %s"%hash_table['trimmomatic_folder']
 print "bwa_folder:",hash_table['bwa_folder']
 print "samtools_folder: %s"%hash_table['samtools_folder']
-print "gatk_folder: %s"%hash_table['gatk_folder']
-print "picardtools_folder: %s"%hash_table['picardtools_folder']
+print "gatk_tool: %s"%hash_table['gatk_folder']
+print "picardtools_tool: %s"%hash_table['picardtools_folder']
 #print "annovar_folder: %s"%hash_table['annovar_folder']
 #print "soaphla_folder: %s"%hash_table['soaphla_folder']
 
 print "\nProject parameters are:"
-print "ref_human_folder: %s"%hash_table['ref_human_folder']
-#print "ref_1000G_folder: %s"%hash_table['ref_1000G_folder']
-#print "ref_Mills_folder: %s"%hash_table['ref_Mills_folder']
-#print "ref_dbsnp_folder: %s"%hash_table['ref_dbsnp_folder']
+print "ref_human_file: %s"%hash_table['ref_human_file']
+print "ref_1000G_file: %s"%hash_table['ref_1000G_file']
+print "ref_Mills_file: %s"%hash_table['ref_Mills_file']
+print "ref_dbsnp_file: %s"%hash_table['ref_dbsnp_file']
 #print "annovarDB_folder: %s"%hash_table['annovarDB_folder']
 print "typeNum: %s"%hash_table['typeNum']
 print "laneNum: %s"%hash_table['laneNum']
@@ -67,11 +67,11 @@ print "*************************************************************************
 # Parameter preprocessing
 inputs_folder = hash_table['inputs_folder']
 outputs_folder = hash_table['outputs_folder']
-trimmomatic_folder = hash_table['trimmomatic_folder']
+trimmomatic_tool = hash_table['trimmomatic_tool']
 bwa_folder = hash_table['bwa_folder']
 samtools_folder = hash_table['samtools_folder']
-gatk_folder = hash_table['gatk_folder']
-picardtools_folder = hash_table['picardtools_folder']
+gatk_tool = hash_table['gatk_tool']
+picardtools_tool = hash_table['picardtools_tool']
 VEP_folder = hash_table['VEP_folder']
 #soaphla_folder = hash_table['soaphla_folder']
 #annovarDB_folder = hash_table['annovarDB_folder']
@@ -99,10 +99,10 @@ normal_f = hash_table['normal_f']
 tumor_alt = hash_table['tumor_alt']
 
 ref_folder = [];
-ref_folder.append(hash_table['ref_human_folder']);
-ref_folder.append(hash_table['ref_1000G_folder']);
-ref_folder.append(hash_table['ref_Mills_folder']);
-ref_folder.append(hash_table['ref_dbsnp_folder']);
+ref_folder.append(hash_table['ref_human_file']);
+ref_folder.append(hash_table['ref_1000G_file']);
+ref_folder.append(hash_table['ref_Mills_file']);
+ref_folder.append(hash_table['ref_dbsnp_file']);
 
 
 # -----------------------Main function-------------------------
@@ -129,32 +129,32 @@ fileList = subfunction.getFileList(inputs_folder,"fastq.gz");
 print "\n\n"
 print "*************************************************************************************************************************************"
 print "*** Beginning the 1st procedure: fastq file pre-processing...\n"
-outputCleanedFile = subfunction.runTrimmomatic(trimmomatic_folder,outputs_folder,fileList,leading,trailing,headcrop,slidingwindow,minlen,typeNum,laneNum,partNum,threadNum); # inputFileFolder means the folder of input Files in next processing step 
+outputCleanedFile = subfunction.runTrimmomatic(trimmomatic_tool,outputs_folder,fileList,leading,trailing,headcrop,slidingwindow,minlen,typeNum,laneNum,partNum,threadNum); # inputFileFolder means the folder of input Files in next processing step 
 print "So far the 1st procedure done.\n\n"
 
 print "*************************************************************************************************************************************"
 print "*** Beginning the 2nd procedure: BWA mapping to genome reference sequence...\n"
-outputSamFiles = subfunction.runBWA(bwa_folder,gatk_folder,ref_folder,outputs_folder,outputCleanedFile,typeNum,laneNum,partNum,threadNum);
+outputSamFiles = subfunction.runBWA(bwa_folder,gatk_tool,ref_folder,outputs_folder,outputCleanedFile,typeNum,laneNum,partNum,threadNum);
 print "So far the 2nd procedure done.\n\n"
 
 print "*************************************************************************************************************************************"
 print "*** Beginning the 3rd procedure: Samtools to rearrange the sequence...\n"
-outputIndFiles = subfunction.runSAM(samtools_folder,picardtools_folder,outputs_folder,outputSamFiles,typeNum,laneNum,threadNum);
+outputIndFiles = subfunction.runSAM(samtools_folder,picardtools_tool,outputs_folder,outputSamFiles,typeNum,laneNum,threadNum);
 print "So far the 3rd procedure done.\n\n"
 
 print "*************************************************************************************************************************************"
 print "*** Beginning the 4th procedure: GATK local realignment around indels...\n"
-outputRecalBamFiles = subfunction.runGATK(samtools_folder,gatk_folder,ref_folder,outputs_folder,outputIndFiles,typeNum,needRevisedData);
+outputRecalBamFiles = subfunction.runGATK(samtools_folder,gatk_tool,ref_folder,outputs_folder,outputIndFiles,typeNum,needRevisedData);
 print "So far the 4th procedure done.\n\n"
 
 print "*************************************************************************************************************************************"
 print "*** Beginning the 5th procedure: MuTect to detect somatic mutation...\n"
-outputMutectVcfFiles = subfunction.runMUTECT2(gatk_folder,ref_folder,outputs_folder,outputRecalBamFiles,typeNum,tumor_reads,normal_reads,tumor_f,normal_f,tumor_alt);
+outputMutectVcfFiles = subfunction.runMUTECT2(gatk_tool,ref_folder,outputs_folder,outputRecalBamFiles,typeNum,tumor_reads,normal_reads,tumor_f,normal_f,tumor_alt);
 print "So far the 5th procedure done.\n\n"
 
 print "*************************************************************************************************************************************"
 print "*** Beginning the 6th procedure: VEP annotation...\n"
-subfunction.runVEP(VEP_folder,outputs_folder,['/home/biopharm/Software/tsnad/update/results/mutect2_results/mutect_call_adj.vcf']);
+subfunction.runVEP(VEP_folder,outputs_folder,outputMutectVcfFiles);
 print "So far the 6th procedure done.\n\n"
 '''
 print "*************************************************************************************************************************************"
