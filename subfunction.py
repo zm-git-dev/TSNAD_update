@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # ******************** Software Information *******************
-# Version: Somatic_Mutation_Detector 2.0
+# Version: TSNAD v1.1
 # File: subfunction.py
 # Python Version: 2.7.11
 # Finish time: November, 2018.
 # Developer: Zhan Zhou, Xingzheng Lyu, Jingcheng Wu
-# Copyright (C) 2015-2016 - College of Pharmaceutical Sciences, 
+# Copyright (C) 2018-2019 - College of Pharmaceutical Sciences, 
 #               Zhejiang University - All Rights Reserved 
 # *************************************************************
 # 
