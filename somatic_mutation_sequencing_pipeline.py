@@ -33,11 +33,11 @@ print "***************************************************************** Paramet
 print "System parameters are:"
 print "inputs_folder: %s"%hash_table['inputs_folder']
 print "outputs_folder: %s"%hash_table['outputs_folder']
-print "trimmomatic_tool: %s"%hash_table['trimmomatic_folder']
+print "trimmomatic_tool: %s"%hash_table['trimmomatic_tool']
 print "bwa_folder:",hash_table['bwa_folder']
 print "samtools_folder: %s"%hash_table['samtools_folder']
-print "gatk_tool: %s"%hash_table['gatk_folder']
-print "picardtools_tool: %s"%hash_table['picardtools_folder']
+print "gatk_tool: %s"%hash_table['gatk_tool']
+print "picardtools_tool: %s"%hash_table['picardtools_tool']
 #print "annovar_folder: %s"%hash_table['annovar_folder']
 #print "soaphla_folder: %s"%hash_table['soaphla_folder']
 
