@@ -59,6 +59,8 @@ TSNAD uses the following software and libraries:
 		cd ensembl-vep-release-*
 		perl INSTALL.pl
 	
+	download the API, download the cache 242 *homo_sapiens_merged_vep_94_GRCh37.tar.gz*.
+	
 	if it is not help, try following step:
 		
 		cd 
@@ -79,6 +81,8 @@ TSNAD uses the following software and libraries:
 		sudo perl -MCPAN -e shell
 		install Bio::PrimarySeqI
 		install DBI
+		
+		wget ftp://ftp.ensembl.org/pub/release-94/variation/VEP/homo_sapiens_merged_vep_94_GRCh37.tar.gz
 
 ## files needed for TSNAD
 
