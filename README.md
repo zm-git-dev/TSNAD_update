@@ -160,8 +160,8 @@ then
 1. Trimmomatic v0.35 -> v0.38  
 2. BWA v0.7.12 -> v0.7.17  
 3. Samtools v1.3 -> v1.9  
-4. Picard v1.140 -> v2.18.14  
-5. GATK v3.5 -> v4.0.8.1  
+4. Picard v1.140 -> embedded in GATK 
+5. GATK v3.5 -> v4.0.11.0  
 6. Annovar -> VEP v94  
  
 
