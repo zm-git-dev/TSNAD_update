@@ -16,10 +16,10 @@ TSNAD uses the following software and libraries:
   	
 1. [Trimmomatic](http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.38.zip)  
 2. [bwa](https://sourceforge.net/projects/bio-bwa/files/bwa-0.7.17.tar.bz2/download)  
-3. [samtools](https://sourceforge.net/projects/samtools/files/latest/download)  
-4. [picard](https://github.com/broadinstitute/picard/releases/download/2.18.15/picard.jar)    
-5. [GATK](https://github.com/broadinstitute/gatk/releases/download/4.0.11.0/gatk-4.0.11.0.zip)   
-6. [VEP](https://github.com/Ensembl/ensembl-vep/archive/release/94.zip)   
+3. [samtools](https://sourceforge.net/projects/samtools/files/latest/download)     
+4. [GATK](https://github.com/broadinstitute/gatk/releases/download/4.0.11.0/gatk-4.0.11.0.zip)   
+5. [VEP](https://github.com/Ensembl/ensembl-vep/archive/release/94.zip)   
+6. [hisat2](http://ccb.jhu.edu/software/hisat2/dl/hisat2-2.1.0-Linux_x86_64.zip)   
 7. JAVA     
 8. Python    
 9. Perl   
@@ -82,9 +82,15 @@ TSNAD uses the following software and libraries:
 		install Bio::PrimarySeqI
 		install DBI
 		
-		wget ftp://ftp.ensembl.org/pub/release-94/variation/VEP/homo_sapiens_merged_vep_94_GRCh37.tar.gz
+6. Hisat
 
-## files needed for TSNAD
+		unzip hisat2-*.zip
+
+## Files needed for TSNAD
+
+uncompress all the downloaded files.
+
+### GATK
 
 	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/1000G_phase1.snps.high_confidence.b37.vcf.gz
 	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/1000G_phase1.snps.high_confidence.b37.vcf.idx.gz
@@ -92,9 +98,20 @@ TSNAD uses the following software and libraries:
 	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/dbsnp_138.b37.vcf.idx.gz
 	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/Mills_and_1000G_gold_standard.indels.b37.vcf.gz
 	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/Mills_and_1000G_gold_standard.indels.b37.vcf.idx.gz
-	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/human_g1k_v37.fasta.gz
-	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/human_g1k_v37.fasta.fai.gz
+	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/human_g1k_v37.fasta.gz  
+	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/human_g1k_v37.fasta.fai.gz  
+
+### VEP
+
+*homo_sapiens_merged_vep_94_GRCh37.tar.gz*,which can be downloaded through 
 	
+	perl INSTALL.pl 
+
+and choose *242* in cache selection.
+
+### Hisat
+	
+	wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/data/grch37_snp_tran.tar.gz
 
 ## Usage 
 1. configure the file *somatic_mutation_sequencing_parameters.config* ,replace the folder path in your own.
