@@ -20,11 +20,14 @@ TSNAD uses the following software and libraries:
 4. [GATK](https://github.com/broadinstitute/gatk/releases/download/4.0.11.0/gatk-4.0.11.0.zip)   
 5. [VEP](https://github.com/Ensembl/ensembl-vep/archive/release/94.zip)   
 6. [hisat2](http://ccb.jhu.edu/software/hisat2/dl/hisat2-2.1.0-Linux_x86_64.zip)   
-7. JAVA     
-8. Python    
-9. Perl   
+7. [stringtie](http://ccb.jhu.edu/software/stringtie/dl/stringtie-1.3.5.Linux_x86_64.tar.gz)
+8. SOAP-HLA  (In Tools/)
+9. NetMHCpan4.0  (In Tools/)
+10. JAVA     
+11. Python    
+12. Perl   
   
-1-6 tools are better put in the folder Tools/.   
+1-7 tools are better put in the folder Tools/.   
 
 ## Installation of each module
 1. Trimmomatic   
@@ -52,6 +55,17 @@ TSNAD uses the following software and libraries:
 
 		unzip gatk-*.zip
 		sudo apt install openjdk-8-jdk-headless
+	
+		wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/1000G_phase1.snps.high_confidence.b37.vcf.gz
+		wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/1000G_phase1.snps.high_confidence.b37.vcf.idx.gz
+		wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/dbsnp_138.b37.vcf.gz
+		wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/dbsnp_138.b37.vcf.idx.gz
+		wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/Mills_and_1000G_gold_standard.indels.b37.vcf.gz
+		wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/Mills_and_1000G_gold_standard.indels.b37.vcf.idx.gz
+		wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/human_g1k_v37.fasta.gz  
+		wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/human_g1k_v37.fasta.fai.gz  
+	
+	uncompress all the downloaded files
 	
 5. VEP
 
@@ -82,53 +96,34 @@ TSNAD uses the following software and libraries:
 		install Bio::PrimarySeqI
 		install DBI
 		
-6. Hisat
+6. hisat2
 
 		unzip hisat2-*.zip
+		cd hisat2-*
+		wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/data/grch37.tar.gz 
 
-## Files needed for TSNAD
+7. stringtie
 
-uncompress all the downloaded files.
+		tar -xvf stringtie-*.tar.gz
 
-### GATK
-
-	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/1000G_phase1.snps.high_confidence.b37.vcf.gz
-	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/1000G_phase1.snps.high_confidence.b37.vcf.idx.gz
-	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/dbsnp_138.b37.vcf.gz
-	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/dbsnp_138.b37.vcf.idx.gz
-	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/Mills_and_1000G_gold_standard.indels.b37.vcf.gz
-	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/Mills_and_1000G_gold_standard.indels.b37.vcf.idx.gz
-	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/human_g1k_v37.fasta.gz  
-	wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/b37/human_g1k_v37.fasta.fai.gz  
-
-### VEP
-
-*homo_sapiens_merged_vep_94_GRCh37.tar.gz*,which can be downloaded through 
-	
-	perl INSTALL.pl 
-
-and choose *242* in cache selection.
-
-### Hisat
-	
-	wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/data/grch37_snp_tran.tar.gz
 
 ## Usage 
 1. configure the file *somatic_mutation_sequencing_parameters.config* ,replace the folder path in your own.
 	
-		trimmomatic_folder /home/biopharm/Software/tsnad/update/Tools/Trimmomatic-0.38/trimmomatic-0.38.jar
-		bwa_folder /home/biopharm/Software/tsnad/update/Tools/bwa-0.7.17/
-		samtools_folder /home/biopharm/Software/tsnad/update/Tools/samtools-1.9/
-		picardtools_folder /home/biopharm/Software/tsnad/update/Tools/Picardtools/picard.jar
-		gatk_folder /home/biopharm/Software/tsnad/update/Tools/gatk-4.0.8.1/gatk-package-4.0.8.1-local.jar
-		VEP_folder /home/biopharm/Software/tsnad/update/Tools/ensembl-vep-release-93/
+		trimmomatic_tool /home/biopharm/Software/TSNAD_update-master/Tools/Trimmomatic-0.38/trimmomatic-0.38.jar
+		bwa_folder /home/biopharm/Software/TSNAD_update-master/Tools/bwa-0.7.17/
+		samtools_folder /home/biopharm/Software/TSNAD_update-master/Tools/samtools-1.9/
+		picardtools_tool /home/biopharm/Software/TSNAD_update-master/Tools/picard.jar
+		gatk_tool /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/gatk-package-4.0.11.0-local.jar
+		VEP_folder /home/biopharm/Software/TSNAD_update-master/Tools/ensembl-vep-release-94/
+		soaphla_folder /home/biopharm/Software/TSNAD_update-master/Tools/SOAP-HLA/
 		headcrop 10
-		inputs_folder /home/biopharm/TSNAD_update_sample/
-		ref_human_folder /home/biopharm/Software/tsnad/update/Tools/gatk-4.0.8.1/hg38/Homo_sapiens_assembly38.fasta
-		ref_1000G_folder /home/biopharm/Software/tsnad/update/Tools/gatk-4.0.8.1/hg38/1000G_phase1.snps.high_confidence.hg38.vcf
-		ref_Mills_folder /home/biopharm/Software/tsnad/update/Tools/gatk-4.0.8.1/hg38/Mills_and_1000G_gold_standard.indels.hg38.vcf
-		ref_dbsnp_folder /home/biopharm/Software/tsnad/update/Tools/gatk-4.0.8.1/hg38/dbsnp_144.hg38_adj.vcf
-		outputs_folder /home/biopharm/Software/tsnad/update/results/
+		inputs_folder /home/biopharm/Research/TSNAD_update_sample/
+		ref_human_file /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/b37/human_g1k_v37.fasta
+		ref_1000G_file /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/b37/1000G_phase1.snps.high_confidence.b37.vcf
+		ref_Mills_file /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/b37/Mills_and_1000G_gold_standard.indels.b37.vcf
+		ref_dbsnp_file /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/b37/dbsnp_138.b37.vcf
+		outputs_folder /home/biopharm/Software/TSNAD_update-master/results/
 		leading 3
 		minlen 35
 		needRevisedData True
