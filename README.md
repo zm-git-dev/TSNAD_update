@@ -20,9 +20,10 @@ TSNAD uses the following software and libraries:
 4. [GATK](https://github.com/broadinstitute/gatk/releases/download/4.0.11.0/gatk-4.0.11.0.zip)   
 5. [VEP](https://github.com/Ensembl/ensembl-vep/archive/release/94.zip)   
 6. [hisat2](http://ccb.jhu.edu/software/hisat2/dl/hisat2-2.1.0-Linux_x86_64.zip)   
-7. JAVA     
-8. Python    
-9. Perl   
+7. [stringtie](http://ccb.jhu.edu/software/stringtie/dl/stringtie-1.3.5.Linux_x86_64.tar.gz)
+8. JAVA     
+9. Python    
+10. Perl   
   
 1-6 tools are better put in the folder Tools/.   
 
