@@ -101,6 +101,9 @@ TSNAD uses the following software and libraries:
 		unzip hisat2-*.zip
 		cd hisat2-*
 		wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/data/grch37.tar.gz 
+		wget ftp://ftp.ensembl.org/pub/grch37/release-94/gtf/homo_sapiens/Homo_sapiens.GRCh37.87.gtf.gz
+		tar -xvf grch37.tar.gz
+		tar -xvf Homo_sapiens.GRCh37.87.gtf.gz
 
 7. stringtie
 
