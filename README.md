@@ -94,11 +94,16 @@ TSNAD uses the following software and libraries:
 		install Bio::PrimarySeqI
 		install DBI
 		
-6. Hisat
+6. hisat2
 
 		unzip hisat2-*.zip
 		cd hisat2-*
-		wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/data/grch37.tar.gz	
+		wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/data/grch37.tar.gz 
+
+7.stringtie
+
+		tar -xvf stringtie-*.tar.gz
+
 
 ## Usage 
 1. configure the file *somatic_mutation_sequencing_parameters.config* ,replace the folder path in your own.
