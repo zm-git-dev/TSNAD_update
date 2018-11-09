@@ -21,9 +21,11 @@ TSNAD uses the following software and libraries:
 5. [VEP](https://github.com/Ensembl/ensembl-vep/archive/release/94.zip)   
 6. [hisat2](http://ccb.jhu.edu/software/hisat2/dl/hisat2-2.1.0-Linux_x86_64.zip)   
 7. [stringtie](http://ccb.jhu.edu/software/stringtie/dl/stringtie-1.3.5.Linux_x86_64.tar.gz)
-8. JAVA     
-9. Python    
-10. Perl   
+8. SOAP-HLA (In Tools/)
+9. NetMHCpan4.0(In Tools/)
+10. JAVA     
+11. Python    
+12. Perl   
   
 1-6 tools are better put in the folder Tools/.   
 
@@ -100,7 +102,7 @@ TSNAD uses the following software and libraries:
 		cd hisat2-*
 		wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/data/grch37.tar.gz 
 
-7.stringtie
+7. stringtie
 
 		tar -xvf stringtie-*.tar.gz
 
