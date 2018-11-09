@@ -105,6 +105,18 @@ TSNAD uses the following software and libraries:
 7. stringtie
 
 		tar -xvf stringtie-*.tar.gz
+		
+8. SOAP-HLA
+		
+		unzip SOAP-HLA.zip
+		
+9. NetMHCpan4.0 
+		
+		unzip netMHCpan-4.0.zip
+		cd netMHCpan-4.0
+		vim netMHCpan
+		
+ 	change the *full path* and *tmpdir path* in your own path.
 
 
 ## Usage 
@@ -175,6 +187,7 @@ then
 4. Picard v1.140 -> embedded in GATK 
 5. GATK v3.5 -> v4.0.11.0  
 6. Annovar -> VEP v94  
+7. NetMHCpan v2.8 -> v4.0
  
 
   
