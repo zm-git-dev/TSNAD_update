@@ -103,7 +103,7 @@ TSNAD uses the following software and libraries:
 		wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/data/grch37.tar.gz 
 		wget ftp://ftp.ensembl.org/pub/grch37/release-94/gtf/homo_sapiens/Homo_sapiens.GRCh37.87.gtf.gz
 		tar -xvf grch37.tar.gz
-		tar -xvf Homo_sapiens.GRCh37.87.gtf.gz
+		gunzip Homo_sapiens.GRCh37.87.gtf.gz -d
 
 7. stringtie
 
@@ -123,7 +123,12 @@ TSNAD uses the following software and libraries:
 
 
 ## Usage 
-1. configure the file *somatic_mutation_sequencing_parameters.config* ,replace the folder path in your own.
+1. configure the file *somatic_mutation_sequencing_parameters.config* ,replace the folder path in your own.  
+
+The *RNA_seq_folder* must be empty if you don't have RNA-seq data.  
+
+*hisat2_folder* and *stringtie_tool* are used for RNA-seq analysis. 
+
 	
 		trimmomatic_tool /home/biopharm/Software/TSNAD_update-master/Tools/Trimmomatic-0.38/trimmomatic-0.38.jar
 		bwa_folder /home/biopharm/Software/TSNAD_update-master/Tools/bwa-0.7.17/
@@ -131,14 +136,17 @@ TSNAD uses the following software and libraries:
 		picardtools_tool /home/biopharm/Software/TSNAD_update-master/Tools/picard.jar
 		gatk_tool /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/gatk-package-4.0.11.0-local.jar
 		VEP_folder /home/biopharm/Software/TSNAD_update-master/Tools/ensembl-vep-release-94/
+		hisat2_folder /home/biopharm/Software/TSNAD_update-master/Tools/hisat2-2.1.0/
+		stringtie_tool /home/biopharm/Software/TSNAD_update-master/Tools/hisat2-2.1.0/stringtie-1.3.5.Linux_x86_64/stringtie
 		soaphla_folder /home/biopharm/Software/TSNAD_update-master/Tools/SOAP-HLA/
-		headcrop 10
 		inputs_folder /home/biopharm/Research/TSNAD_update_sample/
+		RNA_seq_folder /media/biopharm/data2/NAJ_data/Lab_RNA-seq/S0517021701/
+		outputs_folder /home/biopharm/Software/TSNAD_update-master/results/
 		ref_human_file /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/b37/human_g1k_v37.fasta
 		ref_1000G_file /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/b37/1000G_phase1.snps.high_confidence.b37.vcf
 		ref_Mills_file /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/b37/Mills_and_1000G_gold_standard.indels.b37.vcf
 		ref_dbsnp_file /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/b37/dbsnp_138.b37.vcf
-		outputs_folder /home/biopharm/Software/TSNAD_update-master/results/
+		headcrop 10
 		leading 3
 		minlen 35
 		needRevisedData True
@@ -153,6 +161,7 @@ TSNAD uses the following software and libraries:
 		typeNum 2
 		laneNum 1
 		partNum 2
+		
 
 then 
 
