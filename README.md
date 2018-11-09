@@ -169,18 +169,16 @@ then
 
 2. configure the file *antigen_predicting_parameters.config* ,
 
-		A1 02:07
-		A2 26:01
-		B1 39:01
-		B2 50:01
-		C1 06:02
-		C2 07:02
-		Input_file /home/biopharm/Research/NAJ/NAG1606001/output/annovar_results/mutect_call_missenseMutation.txt
-		Outputs_folder /home/biopharm/Research/NAJ/NAG1606001/output/netMHCpan_results/
-		netMHCpan_folder /home/biopharm/Software/netMHCpan/netMHCpan-2.8/
+		A1 02:01
+		A2 02:01
+		B1 27:05
+		B2 15:18
+		C1 07:04
+		C2 02:02
+		Input_file /home/biopharm/Software/TSNAD_update-master/results/vep_results/mutect_call_adj_vep_filtered.txt
+		Outputs_folder /home/biopharm/Software/TSNAD_update-master/results/netmhcpan_results/
+		netMHCpan_folder /home/biopharm/Software/TSNAD_update-master/Tools/netMHCpan-4.0/
 		peptide_length 8,9,10,11
-		strong_binding 150
-		weak_binding 500
 
 then 
 
@@ -201,6 +199,7 @@ then
 6. Annovar -> VEP v94  
 7. NetMHCpan v2.8 -> v4.0
  
+Add the function of RNA-seq for neoantigen filter.
 
   
  
