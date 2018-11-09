@@ -199,7 +199,7 @@ then
 6. Annovar -> VEP v94  
 7. NetMHCpan v2.8 -> v4.0
  
-Add the function of RNA-seq for neoantigen filter.
+Add the function of RNA-seq analysis for neoantigen filter.
 
   
  
