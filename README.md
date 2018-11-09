@@ -103,19 +103,20 @@ TSNAD uses the following software and libraries:
 ## Usage 
 1. configure the file *somatic_mutation_sequencing_parameters.config* ,replace the folder path in your own.
 	
-		trimmomatic_folder /home/biopharm/Software/tsnad/update/Tools/Trimmomatic-0.38/trimmomatic-0.38.jar
-		bwa_folder /home/biopharm/Software/tsnad/update/Tools/bwa-0.7.17/
-		samtools_folder /home/biopharm/Software/tsnad/update/Tools/samtools-1.9/
-		picardtools_folder /home/biopharm/Software/tsnad/update/Tools/Picardtools/picard.jar
-		gatk_folder /home/biopharm/Software/tsnad/update/Tools/gatk-4.0.8.1/gatk-package-4.0.8.1-local.jar
-		VEP_folder /home/biopharm/Software/tsnad/update/Tools/ensembl-vep-release-93/
+		trimmomatic_tool /home/biopharm/Software/TSNAD_update-master/Tools/Trimmomatic-0.38/trimmomatic-0.38.jar
+		bwa_folder /home/biopharm/Software/TSNAD_update-master/Tools/bwa-0.7.17/
+		samtools_folder /home/biopharm/Software/TSNAD_update-master/Tools/samtools-1.9/
+		picardtools_tool /home/biopharm/Software/TSNAD_update-master/Tools/picard.jar
+		gatk_tool /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/gatk-package-4.0.11.0-local.jar
+		VEP_folder /home/biopharm/Software/TSNAD_update-master/Tools/ensembl-vep-release-94/
+		soaphla_folder /home/biopharm/Software/TSNAD_update-master/Tools/SOAP-HLA/
 		headcrop 10
-		inputs_folder /home/biopharm/TSNAD_update_sample/
-		ref_human_folder /home/biopharm/Software/tsnad/update/Tools/gatk-4.0.8.1/hg38/Homo_sapiens_assembly38.fasta
-		ref_1000G_folder /home/biopharm/Software/tsnad/update/Tools/gatk-4.0.8.1/hg38/1000G_phase1.snps.high_confidence.hg38.vcf
-		ref_Mills_folder /home/biopharm/Software/tsnad/update/Tools/gatk-4.0.8.1/hg38/Mills_and_1000G_gold_standard.indels.hg38.vcf
-		ref_dbsnp_folder /home/biopharm/Software/tsnad/update/Tools/gatk-4.0.8.1/hg38/dbsnp_144.hg38_adj.vcf
-		outputs_folder /home/biopharm/Software/tsnad/update/results/
+		inputs_folder /home/biopharm/Research/TSNAD_update_sample/
+		ref_human_file /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/b37/human_g1k_v37.fasta
+		ref_1000G_file /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/b37/1000G_phase1.snps.high_confidence.b37.vcf
+		ref_Mills_file /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/b37/Mills_and_1000G_gold_standard.indels.b37.vcf
+		ref_dbsnp_file /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/b37/dbsnp_138.b37.vcf
+		outputs_folder /home/biopharm/Software/TSNAD_update-master/results/
 		leading 3
 		minlen 35
 		needRevisedData True
