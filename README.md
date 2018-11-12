@@ -133,7 +133,6 @@ The *RNA_seq_folder* must be empty if you don't have RNA-seq data.
 		trimmomatic_tool /home/biopharm/Software/TSNAD_update-master/Tools/Trimmomatic-0.38/trimmomatic-0.38.jar
 		bwa_folder /home/biopharm/Software/TSNAD_update-master/Tools/bwa-0.7.17/
 		samtools_folder /home/biopharm/Software/TSNAD_update-master/Tools/samtools-1.9/
-		picardtools_tool /home/biopharm/Software/TSNAD_update-master/Tools/picard.jar
 		gatk_tool /home/biopharm/Software/TSNAD_update-master/Tools/gatk-4.0.11.0/gatk-package-4.0.11.0-local.jar
 		VEP_folder /home/biopharm/Software/TSNAD_update-master/Tools/ensembl-vep-release-94/
 		hisat2_folder /home/biopharm/Software/TSNAD_update-master/Tools/hisat2-2.1.0/
